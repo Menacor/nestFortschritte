@@ -18,6 +18,11 @@ for row in neuronReader:
 for row in connectionsReader:
  connections.append(row)
 
-print neuronSets
+for i in len(neuronSets)
+ pass
+
+print (neuronSets)
 print
-print connections
+print (len(neuronSets))
+
+
