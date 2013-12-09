@@ -2,6 +2,8 @@ import nest
 import nest.voltage_trace
 import pylab
 
+nest.ResetKernel()
+
 liste = [(1,2,0.999),(16,4,0.356),(4,21,0.356),(11,14,0.2271)]
 
 neuronNo={} #currently empty
@@ -14,6 +16,7 @@ for a in liste:
 
 for b in neuronNo: 
 	print(b)
+
 
 CA3 = nest.Create('iaf_neuron')
 DGneuron = nest.Create('iaf_neuron')
@@ -40,3 +43,4 @@ nest.voltage_trace.from_device(voltmeter)
 nest.PrintNetwork()
 
 pylab.show()
+
