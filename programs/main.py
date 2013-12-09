@@ -1,5 +1,5 @@
 import nest
-import nest.topology as tp
+#import nest.topology as tp
 import csv
 
 
@@ -51,8 +51,8 @@ print
 
 # print all information
 neurons =  getNeurons(neuronCSV)
-print ("Neuronen:")
+print ("Neurons:")
 print neurons
 connections = getConnections(connectionsCSV)
-print ("\nVerbindungen:")
+print ("\nConnections:")
 print ( connections)
