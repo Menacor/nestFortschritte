@@ -9,8 +9,8 @@ connections = []
 inputSets = raw_input("Specify a file name for the neuronSets: ")
 inputConnections = raw_input("Specify a file name for the connections: ")
 
-neuronReader = csv.reader(open(inputSets, "rb")) 
-connectionsReader = csv.reader(open(inputConnections, "rb")) 
+neuronReader = csv.reader(open(inputSets, "r")) 
+connectionsReader = csv.reader(open(inputConnections, "r")) 
 
 for row in neuronReader:
  neuronSets.append(row)
@@ -18,6 +18,4 @@ for row in neuronReader:
 for row in connectionsReader:
  connections.append(row)
 
-for i in len(neuronSets)
- pass
-
+print neuronSets
