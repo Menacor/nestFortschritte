@@ -41,7 +41,7 @@ def getConnections(csvfile):
 # ============= begin with the program ============= #
 
 # read csv files from console
-neuronCSV = raw_input("Specify a filename for the neuronSets: ")
+neuronCSV = raw_input("Specify a filename for the neurons: ")
 connectionsCSV = raw_input("Specify a filename for the connections: ")
 
 print
