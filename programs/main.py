@@ -11,10 +11,10 @@ def getNeurons(csvfile):
   # get information about the neuron sets from the respective csv file
   with open(csvfile, "r") as nsfile:
   
-    nsreader = csv.reader(nsfile, delimiter=";")
+    nreader = csv.reader(nsfile, delimiter=";")
   
-    for neuronSet in nsreader:
-      neurons.extend(nest.Create("iaf_neuron"))
+    for neuron in nreader:
+      neurons.extend(nest.Create(neuron[1]))
 
   return neurons
 
