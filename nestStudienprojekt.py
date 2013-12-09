@@ -21,8 +21,3 @@ for row in connectionsReader:
 for i in len(neuronSets)
  pass
 
-print (neuronSets)
-print
-print (len(neuronSets))
-
-
