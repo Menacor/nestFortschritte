@@ -14,7 +14,7 @@ def getNeurons(csvfile):
     nsreader = csv.reader(nsfile, delimiter=";")
   
     for neuronSet in nsreader:
-      neurons = nest.Create("iaf_neuron", int(neuronSet[2]))
+      neurons.extend(nest.Create("iaf_neuron"))
 
   return neurons
 
