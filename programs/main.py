@@ -68,15 +68,12 @@ print connections
 
 connect = createConnections(neurons,connections)
 
-
-
-
 ###########################
-neuron = nest.Create('iaf_neuron')
 sine = nest.Create('ac_generator', 1, {'amplitude': 100.0, 'frequency': 2.0})
 noise = nest.Create('poisson_generator', 2,[{'rate': 70000.0}, {'rate': 20000.0}])
 voltmeter = nest.Create('voltmeter', 1, {'withgid':True})
 
+neuron = nest.Create('iaf_neuron')
 nest.Connect(sine, neuron)
 nest.Connect(voltmeter, neuron)
 
