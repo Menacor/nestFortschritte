@@ -1,6 +1,8 @@
 import nest
 #import nest.topology as tp
 import csv
+import nest.voltage_trace
+import pylab
 
 
 # function that returns all neurons in a list
@@ -65,4 +67,27 @@ print ("\nConnections:")
 print connections
 
 connect = createConnections(neurons,connections)
+
+print
+nest.PrintNetwork()
+####################
+sine = nest.Create('ac_generator',1,{'amplitude':100.0,'frequency':2.0})
+
+noise = nest.Create('poisson_generator',2,[{'rate':70000.0},{'rate':20000.0}])
+
+voltmeter = nest.Create('voltmeter',1,{'withgid':True})
+
+nest.Connect(sine, neurons[0])
+
+nest.Connect(voltmeter, neurons[1])
+nest.Connect(voltmeter, neurons[2])
+
+nest.ConvergentConnect(noise, neurons[1], [1.0,-1.0],1.0)
+nest.ConvergentConnect(noise, neurons[2], [1.0,-1.0],1.0)
+
+nest.Simulate(1000.0)
+
+nest.voltage_trace.from_device(voltmeter)
+
+pylab.show()
 
