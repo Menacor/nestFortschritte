@@ -1,10 +1,7 @@
 import nest
 #import nest.topology as tp
 import csv
-<<<<<<< HEAD
 import nest.voltage_trace
-=======
->>>>>>> 6e87b1c844cb004c7f4d60aa9d9e211e0654fda9
 import pylab
 
 
@@ -72,8 +69,6 @@ print connections
 
 connect = createConnections(neurons,connections)
 
-<<<<<<< HEAD
-print
 nest.PrintNetwork()
 ####################
 sine = nest.Create('ac_generator',1,{'amplitude':100.0,'frequency':2.0})
@@ -95,21 +90,6 @@ nest.Simulate(1000.0)
 nest.voltage_trace.from_device(voltmeter)
 
 pylab.show()
-
-=======
-###########################
-sine = nest.Create('ac_generator', 1, {'amplitude': 100.0, 'frequency': 2.0})
-noise = nest.Create('poisson_generator', 2,[{'rate': 70000.0}, {'rate': 20000.0}])
-voltmeter = nest.Create('voltmeter', 1, {'withgid':True})
-
-neuron = nest.Create('iaf_neuron')
-nest.Connect(sine, neuron)
-nest.Connect(voltmeter, neuron)
-
-nest.ConvergentConnect(noise, neuron,[1.0,-1.0], 1.0)
-
-#show us some results! NOW!
-nest.Simulate(1000.0)
 nest.PrintNetwork()
 pylab.show()
->>>>>>> 6e87b1c844cb004c7f4d60aa9d9e211e0654fda9
+
