@@ -12,9 +12,9 @@ def getNeurons(csvfile):
   with open(csvfile, "r") as nsfile:
   
     nreader = csv.reader(nsfile, delimiter=";")
-  
+    
     for neuron in nreader:
-      neurons.extend(nest.Create(neuron[1]))
+     neurons.append(nest.Create(neuron[1]))
 
   return neurons
 
@@ -37,6 +37,9 @@ def getConnections(csvfile):
 
   return connections
 
+#function that creates the connections between the neurons
+def createConnections(neurons,connections):
+  pass
 
 # ============= begin with the program ============= #
 
@@ -53,6 +56,8 @@ print
 neurons =  getNeurons(neuronCSV)
 print ("Neurons:")
 print neurons
+
 connections = getConnections(connectionsCSV)
 print ("\nConnections:")
-print ( connections)
+print connections
+
