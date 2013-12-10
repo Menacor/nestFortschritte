@@ -43,4 +43,3 @@ nest.voltage_trace.from_device(voltmeter)
 nest.PrintNetwork()
 
 pylab.show()
-
