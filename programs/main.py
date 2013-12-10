@@ -57,11 +57,11 @@ def connectVSN(neuron,v,s,n):
 nest.ResetKernel() #Reset the Kernel when starting the programm
 
 # read csv files from console
-#neuronCSV =  raw_input("Specify a filename for the neurons: ")
-#connectionsCSV = # raw_input("Specify a filename for the connections: ")
+neuronCSV =  raw_input("Specify a filename for the neurons: ")
+connectionsCSV = raw_input("Specify a filename for the connections: ")
 
-neuronCSV ='../csv/neurons.csv'
-connectionsCSV = '../csv/connections.csv'
+#neuronCSV ='../csv/neurons.csv'
+#connectionsCSV = '../csv/connections.csv'
 
 # print all information
 neurons =  getNeurons(neuronCSV)
@@ -77,21 +77,12 @@ sine = nest.Create('ac_generator',1,{'amplitude':100.0,'frequency':2.0})
 noise = nest.Create('poisson_generator',2,[{'rate':70000.0},{'rate':20000.0}])
 voltmeter = nest.Create('voltmeter',1,{'withgid':True})
 
-'''nest.Connect(voltmeter, neurons[1])
-nest.Connect(voltmeter, neurons[2])
-
-nest.ConvergentConnect(noise, neurons[1], [1.0,-1.0],1.0)
-nest.ConvergentConnect(noise, neurons[2], [1.0,-1.0],1.0)
-'''
-
 for neuron in neurons:
  connectVSN(neuron, voltmeter, sine, noise)
 
-
 #show results
 nest.Simulate(1000.0)
-#nest.voltage_trace.from_device(voltmeter)
-pylab.show()
+nest.voltage_trace.from_device(voltmeter)
 nest.PrintNetwork()
 pylab.show()
 
