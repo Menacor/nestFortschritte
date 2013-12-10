@@ -50,9 +50,7 @@ def createConnections(neurons,connections):
 def connectVSN(neuron,v,s,n):    
    nest.Connect(v, neuron) #connect with voltmeter
    nest.Connect(s, neuron) #connect with sine
-   nest.Connect(n, neuron) #connect with noise
-
-
+   nest.ConvergentConnect(n, neuron,[1.0,-1.0],1.0) #connect with noise
 
 # ============= begin with the program ============= #
 
