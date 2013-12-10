@@ -46,6 +46,13 @@ def createConnections(neurons,connections):
     if(connTuple[0] == neuronTuple):
       nest.Connect(neurons[connTuple[0]],neurons[connTuple[1]])
 
+#function that connects the voltmeter/sine/poisson with the neurons
+def connectVSN(neuron,v,s,n):    
+   nest.Connect(v, neuron) #connect with voltmeter
+   nest.Connect(s, neuron) #connect with sine
+   nest.Connect(n, neuron) #connect with noise
+
+
 
 # ============= begin with the program ============= #
 
@@ -68,27 +75,24 @@ print ("\nConnections:")
 print connections
 
 connect = createConnections(neurons,connections)
-
-nest.PrintNetwork()
-####################
 sine = nest.Create('ac_generator',1,{'amplitude':100.0,'frequency':2.0})
-
 noise = nest.Create('poisson_generator',2,[{'rate':70000.0},{'rate':20000.0}])
-
 voltmeter = nest.Create('voltmeter',1,{'withgid':True})
 
-nest.Connect(sine, neurons[0])
-
-nest.Connect(voltmeter, neurons[1])
+'''nest.Connect(voltmeter, neurons[1])
 nest.Connect(voltmeter, neurons[2])
 
 nest.ConvergentConnect(noise, neurons[1], [1.0,-1.0],1.0)
 nest.ConvergentConnect(noise, neurons[2], [1.0,-1.0],1.0)
+'''
 
+for neuron in neurons:
+ connectVSN(neuron, voltmeter, sine, noise)
+
+
+#show results
 nest.Simulate(1000.0)
-
-nest.voltage_trace.from_device(voltmeter)
-
+#nest.voltage_trace.from_device(voltmeter)
 pylab.show()
 nest.PrintNetwork()
 pylab.show()
