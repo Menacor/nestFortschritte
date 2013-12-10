@@ -1,6 +1,7 @@
 import nest
 #import nest.topology as tp
 import csv
+import pylab
 
 
 # function that returns all neurons in a list
@@ -65,4 +66,6 @@ print ("\nConnections:")
 print connections
 
 connect = createConnections(neurons,connections)
+
+pylab.show()
 
