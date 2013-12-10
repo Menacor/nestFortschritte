@@ -42,18 +42,18 @@ def createConnections(neurons,connections):
   for connTuple in connections:
    for neuronTuple in neurons:
     if(connTuple[0] == neuronTuple):
-     nest.Connect(neurons[connTuple[0]],neurons[connTuple[1]])
+      nest.Connect(neurons[connTuple[0]],neurons[connTuple[1]])
+
 
 # ============= begin with the program ============= #
 
+
 # read csv files from console
-neuronCSV = raw_input("Specify a filename for the neurons: ")
-connectionsCSV = raw_input("Specify a filename for the connections: ")
+#neuronCSV =  raw_input("Specify a filename for the neurons: ")
+#connectionsCSV = # raw_input("Specify a filename for the connections: ")
 
-print
-
-# ../csv/neuronsets.csv
-# ../csv/connections.csv
+neuronCSV ='../csv/neurons.csv'
+connectionsCSV = '../csv/connections.csv'
 
 # print all information
 neurons =  getNeurons(neuronCSV)
