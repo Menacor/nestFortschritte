@@ -39,7 +39,10 @@ def getConnections(csvfile):
 
 #function that creates the connections between the neurons
 def createConnections(neurons,connections):
-  pass
+  for connTuple in connections:
+   for neuronTuple in neurons:
+    if(connTuple[0] == neuronTuple):
+     nest.Connect(neurons[connTuple[0]],neurons[connTuple[1]])
 
 # ============= begin with the program ============= #
 
@@ -60,4 +63,6 @@ print neurons
 connections = getConnections(connectionsCSV)
 print ("\nConnections:")
 print connections
+
+connect = createConnections(neurons,connections)
 
