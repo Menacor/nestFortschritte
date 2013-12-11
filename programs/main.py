@@ -1,9 +1,11 @@
 import nest
-#import nest.topology as tp
 import csv
 import nest.voltage_trace
 import pylab
 
+
+
+# =================== functions ==================== #
 
 # function that returns all neurons in a list
 def getNeurons(csvfile):
@@ -39,18 +41,23 @@ def getConnections(csvfile):
 
   return connections
 
+
 #function that creates the connections between the neurons
 def createConnections(neurons,connections):
   for connTuple in connections:
-   for neuronTuple in neurons:
-    if(connTuple[0] == neuronTuple):
-      nest.Connect(neurons[connTuple[0]],neurons[connTuple[1]])
+    for neuronTuple in neurons:
+      if(connTuple[0] == neuronTuple):
+        nest.Connect(neurons[connTuple[0]],neurons[connTuple[1]])
+
 
 #function that connects the voltmeter/sine/poisson with the neurons
 def connectVSN(neuron,v,s,n):    
    nest.Connect(v, neuron) #connect with voltmeter
    nest.Connect(s, neuron) #connect with sine
    nest.ConvergentConnect(n, neuron,[1.0,-1.0],1.0) #connect with noise
+
+
+
 
 # ============= begin with the program ============= #
 
@@ -78,7 +85,7 @@ noise = nest.Create('poisson_generator',2,[{'rate':70000.0},{'rate':20000.0}])
 voltmeter = nest.Create('voltmeter',1,{'withgid':True})
 
 for neuron in neurons:
- connectVSN(neuron, voltmeter, sine, noise)
+  connectVSN(neuron, voltmeter, sine, noise)
 
 #show results
 nest.Simulate(1000.0)
