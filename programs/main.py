@@ -52,6 +52,13 @@ def connectVSN(neuron,v,s,n):
    nest.Connect(s, neuron) #connect with sine
    nest.ConvergentConnect(n, neuron,[1.0,-1.0],1.0) #connect with noise
 
+#function that gets a parameter for the time
+def nestSimulate(time,voltmeter):
+   nest.Simulate(time)
+   nest.voltage_trace.from_device(voltmeter)
+   nest.PrintNetwork()
+   pylab.show() 
+
 # ============= begin with the program ============= #
 
 nest.ResetKernel() #Reset the Kernel when starting the programm
@@ -80,9 +87,4 @@ voltmeter = nest.Create('voltmeter',1,{'withgid':True})
 for neuron in neurons:
  connectVSN(neuron, voltmeter, sine, noise)
 
-#show results
-nest.Simulate(1000.0)
-nest.voltage_trace.from_device(voltmeter)
-nest.PrintNetwork()
-pylab.show()
-
+nestSimulate(4000.0,voltmeter)
